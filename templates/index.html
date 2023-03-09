@@ -12,7 +12,7 @@
     {% comment %} POST LIST IS A VIEW IN VIEW.PY {% endcomment %}
 
     {% for post in post_list %}
-      <h2>{{post.title}}</h2>
+      <a href="{% url 'blog_view' post.slug %}"><h2>{{post.title}}</h2></a>
       <p>{{post.author}}</p>
     {% endfor %}
   </body>
