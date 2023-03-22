@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from .models import Post
-from django.views import generic
+from .forms import PostForm
+from django.views import generic 
+from django.views.generic.edit import CreateView
+
 
 # Create your views here.
 class BlogView(generic.DetailView): 
@@ -16,3 +19,15 @@ class AboutView(generic.TemplateView):
 class PostList(generic.ListView):
   queryset = Post.objects.filter(status=1).order_by('-date_created')
   template_name = 'index.html'
+  
+
+class PostCreateView(CreateView):
+    template_name = 'blog/create.html'
+    model = Post
+    fields = ['title', 'content']
+    
+    
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        form.save()
+        return super().form_valid(form)
