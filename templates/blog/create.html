@@ -1,14 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %} 
-  <h1>Blogss <h1>
-  <div>
+
+  <h1 class="text-align-content-lg-center">Create a blog<h1>
+  <div class="container">
     <form action="/create/" method='post'>
       {% csrf_token %}
-      <label for='title'>Blog title:{{post.title}} </label>
-      <input id='title' type='text' name='title' value='{{ title }}'>
-      <textarea id='content' name='content' rows='9' cols='7' placeholder='What do you want to write about?'></textarea>
+      <div class="mb-3">
+        <label for='title' class="form-label">Blog title:</label>
+        <input type="title" class="form-control" id="title">
+      </div>
+      <div class="mb-3">
+        <label for="content" class="form-label">Content</label>
+        <textarea class="form-control" id="content" rows="7"></textarea>
+      </div>
+      <button class="">Save</button>
       <button>Submit</button>
     </form>
-  </div>  
+
+  </div> 
 {% endblock %}

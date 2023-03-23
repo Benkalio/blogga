@@ -3,7 +3,7 @@ from .models import Post
 
 # ADD ROWS TO ADMIN POST
 class PostAdmin(admin.ModelAdmin):
-  list_display = ('title', 'date_created', 'author')
+  list_display = ('title', 'date_created', )
 
 
 # Register your models here.
